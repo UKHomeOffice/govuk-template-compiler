@@ -37,6 +37,15 @@ It will also add the template as a mustache partial with a name of "govuk-templa
 require('hmpo-govuk-template').setup(app[, { ... options ...}]);
 ```
 
+### To only load the partial location but not serve the assets use the template function. The `govukAssetPath` local will need to set to the absolute public asset location.
+```
+app.use(function (req, res, next) {
+    res.locals = res.locals || {};
+    res.locals.govukAssetPath = '/absolute/asset/path'
+});
+app.use(require('hmpo-govuk-template').template);
+```
+
 ### To use the mustache partial
 ```
 {{< govuk-template}}
