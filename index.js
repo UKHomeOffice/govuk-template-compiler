@@ -3,20 +3,25 @@ var path = require('path'),
 
 var basedir = path.dirname(require.resolve('govuk_template_mustache/package.json'));
 
-module.exports = {
+var govuk = {
     setup: function (app, options) {
-
         options = options || {};
         options.path = options.path || '/govuk-assets';
 
         app.use(options.path, servestatic(path.join(basedir, './assets'), options));
         app.use(function (req, res, next) {
             res.locals.govukAssetPath = req.baseUrl + options.path + '/';
-            res.locals.partials = res.locals.partials || {};
-            res.locals.partials['govuk-template'] = path.resolve(__dirname, './govuk_template');
             next();
         });
 
+        app.use(govuk.template);
+    },
+    template: function (req, res, next) {
+        res.locals.partials = res.locals.partials || {};
+        res.locals.partials['govuk-template'] = path.resolve(__dirname, './govuk_template');
+        next();
     },
     assetPath: path.join(basedir, './assets')
 };
+
+module.exports = govuk;
