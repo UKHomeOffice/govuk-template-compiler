@@ -1,6 +1,6 @@
 {
   "name": "hmpo-govuk-template",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Compile govuk mustache template into a more usable format and provide middleware for use in apps",
   "scripts": {
     "postinstall": "node ./build/index.js"
