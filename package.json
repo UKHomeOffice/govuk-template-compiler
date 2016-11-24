@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/UKHomeOffice/govuk-template-compiler",
   "dependencies": {
-    "govuk_template_mustache": "^0.17.3",
+    "govuk_template_mustache": "^0.19.1",
     "hogan.js": "3.0.2",
     "serve-static": "^1.10.3"
   }
