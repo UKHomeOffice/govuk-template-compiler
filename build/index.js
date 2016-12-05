@@ -10,4 +10,9 @@ var template = require.resolve('govuk_template_mustache/views/layouts/govuk_temp
 
 govukTemplate = fs.readFileSync(template, { encoding : 'utf-8' });
 compiledTemplate = Hogan.compile(govukTemplate);
-fs.writeFileSync(path.resolve(__dirname, '../govuk_template.html'), compiledTemplate.render(govukConfig), { encoding : 'utf-8' });
+
+var renderedTemplate = compiledTemplate.render(govukConfig);
+var reHeaderLogo = new RegExp('(<img [^>]+gov.uk_logotype_crown_invert_trans.png[^>]+>)', 'i');
+renderedTemplate = renderedTemplate.replace(reHeaderLogo, '{{$globalHeaderImage}}$1{{/globalHeaderImage}}');
+
+fs.writeFileSync(path.resolve(__dirname, '../govuk_template.html'), renderedTemplate, { encoding : 'utf-8' });
