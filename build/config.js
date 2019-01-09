@@ -3,6 +3,7 @@ module.exports = {
   assetPath: '{{govukAssetPath}}',
   afterHeader: '{{$afterHeader}}{{/afterHeader}}',
   bodyClasses: '{{$bodyClasses}}{{/bodyClasses}}',
+  bodyStart: '{{$bodyStart}}{{/bodyStart}}',
   bodyEnd: '{{$bodyEnd}}{{/bodyEnd}}',
   content: '{{$main}}{{/main}}',
   cookieMessage: '{{$cookieMessage}}{{/cookieMessage}}',
